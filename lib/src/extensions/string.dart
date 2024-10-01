@@ -4,6 +4,10 @@ abstract class CommonString {
   /// An em dash (`—`) is commonly used in typography to set off parenthetical
   /// phrases or provide emphasis in a sentence.
   static const String emDash = "—";
+
+  /// A bullet point (`•`) is a small, round symbol used in typography to indicate a new
+  /// item in a list or to separate items in a series.
+  static const String bulletPoint = "•";
 }
 
 extension Nullability on String? {
