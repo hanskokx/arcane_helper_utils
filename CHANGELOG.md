@@ -1,4 +1,8 @@
 
+## 1.0.3+2
+
+- Added an example project
+
 ## 1.0.3+1
 
 - Updated documentation
