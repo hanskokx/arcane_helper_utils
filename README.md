@@ -3,6 +3,8 @@
 Arcane Helper Utils is a Dart package designed to enhance Dart development by
 providing utility functions and extensions that simplify common tasks.
 
+[![style: arcane analysis](https://img.shields.io/badge/style-arcane_analysis-6E35AE)](https://pub.dev/packages/arcane_analysis)
+
 ## Features
 
 - **Ticker Utility**: A utility class that facilitates time-based actions,
