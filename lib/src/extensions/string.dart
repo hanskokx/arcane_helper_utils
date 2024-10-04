@@ -10,11 +10,35 @@ abstract class CommonString {
   static const String bulletPoint = "•";
 }
 
+/// An extension that adds convenience methods to handle nullability and
+/// emptiness checks for `String?` types.
 extension Nullability on String? {
-  /// Returns `true` if the `String?` is neither `null` nor only contains whitespace.
+  /// Returns `true` if the `String?` is neither `null` nor contains only whitespace.
+  ///
+  /// This is useful for cases where you want to check if a nullable string has a valid
+  /// non-empty, non-whitespace value.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// String? example = "Hello";
+  /// if (example.isNotNullOrEmpty) {
+  ///   print("The string is not null and not empty");
+  /// }
+  /// ```
   bool get isNotNullOrEmpty => !isNullOrEmpty;
 
-  /// Returns `true` if the `String?` is either `null` or contains only  whitespace.
+  /// Returns `true` if the `String?` is either `null` or contains only whitespace.
+  ///
+  /// This is a handy utility to check if a nullable string is either not assigned
+  /// or effectively empty (including strings with only whitespace characters).
+  ///
+  /// Example usage:
+  /// ```dart
+  /// String? example = null;
+  /// if (example.isNullOrEmpty) {
+  ///   print("The string is null or empty");
+  /// }
+  /// ```
   bool get isNullOrEmpty => this == null || (this ?? "").trim().isEmpty;
 }
 

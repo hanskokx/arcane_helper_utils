@@ -26,14 +26,47 @@ THE SOFTWARE.
 
 import "package:flutter/material.dart";
 
+/// A widget that unfocuses the currently focused widget when tapping outside of it.
+///
+/// This is useful for dismissing the keyboard or any focused input field when the user
+/// taps outside of the focused area. The widget wraps its `child` with a `GestureDetector`
+/// that detects taps and unfocuses the primary focus if there is any.
+///
+/// The unfocus behavior can be disabled by setting [isEnabled] to `false`.
+///
+/// Example usage:
+///
+/// ```dart
+/// Unfocuser(
+///   child: YourWidget(),
+/// )
+/// ```
+///
+/// This will unfocus any input fields when the user taps outside of them.
+///
+/// [child] The widget that this widget wraps.
+/// [isEnabled] Whether the unfocus behavior is enabled. Defaults to `true`.
 class Unfocuser extends StatelessWidget {
+  /// Creates an [Unfocuser] widget.
+  ///
+  /// The [child] parameter must not be null. The [isEnabled] parameter determines
+  /// whether the unfocus functionality is active.
   const Unfocuser({
     required this.child,
     super.key,
     this.isEnabled = true,
   });
 
+  /// The widget below this widget in the tree.
+  ///
+  /// This widget will be wrapped with a `GestureDetector` that triggers an
+  /// unfocus action when tapped outside a focused widget, if [isEnabled] is `true`.
   final Widget child;
+
+  /// Whether this widget will trigger the unfocus action.
+  ///
+  /// If set to `true`, tapping outside a focused widget will unfocus it.
+  /// Defaults to `true`.
   final bool isEnabled;
 
   @override

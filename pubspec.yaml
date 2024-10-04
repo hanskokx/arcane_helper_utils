@@ -1,7 +1,7 @@
 name: arcane_helper_utils
 description: Provides a variety of helpful utilities and extensions for Flutter
   and Dart.
-version: 1.0.3
+version: 1.0.3+1
 repository: https://github.com/hanskokx/arcane_helper_utils
 issue_tracker: https://github.com/hanskokx/arcane_helper_utils/issues
 
