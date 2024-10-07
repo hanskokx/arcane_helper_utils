@@ -12,6 +12,12 @@ void main() {
   debugPrint("$today"); // true
   debugPrint("$notToday"); // false
 
+  final DateTime yesterday = DateTime(0).yesterday;
+  final DateTime tomorrow = DateTime(0).tomorrow;
+
+  debugPrint("Yesterday: $yesterday");
+  debugPrint("Tomorrow: $tomorrow");
+
   // Strings
   const String? nullString = null;
   const String emptyString = " ";

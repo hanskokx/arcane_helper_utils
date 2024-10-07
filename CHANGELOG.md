@@ -1,3 +1,6 @@
+## 1.0.4
+
+- Added `yesterday` and `tomorrow` extensions to `DateTime`
 
 ## 1.0.3+2
 

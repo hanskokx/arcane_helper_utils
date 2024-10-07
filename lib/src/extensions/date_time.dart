@@ -109,3 +109,34 @@ extension FirstDayOfWeek on DateTime {
     return firstDay;
   }
 }
+
+/// An extension that provides convenient getters to retrieve the start of
+/// yesterday and tomorrow for `DateTime`.
+///
+/// This extension simplifies the process of getting the start of the previous day
+/// or the next day relative to the current date and time.
+extension YesterdayAndTomorrow on DateTime {
+  /// Returns a `DateTime` representing the start of the previous day (yesterday).
+  ///
+  /// This getter subtracts one day from the current date and time, then returns
+  /// the result with the time set to the start of the day (00:00:00).
+  ///
+  /// Example usage:
+  /// ```dart
+  /// DateTime yesterday = DateTime(0).yesterday;
+  /// ```
+  DateTime get yesterday =>
+      DateTime.now().subtract(const Duration(days: 1)).startOfDay;
+
+  /// Returns a `DateTime` representing the start of the next day (tomorrow).
+  ///
+  /// This getter adds one day to the current date and time, then returns the
+  /// result with the time set to the start of the day (00:00:00).
+  ///
+  /// Example usage:
+  /// ```dart
+  /// DateTime tomorrow = DateTime(0).tomorrow;
+  /// ```
+  DateTime get tomorrow =>
+      DateTime.now().add(const Duration(days: 1)).startOfDay;
+}
