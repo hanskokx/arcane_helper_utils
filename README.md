@@ -102,6 +102,7 @@ These are broken down into the following categories:
 - Start and end of period calculations
 - Comparison operations
 - Period information operations
+- "Yesterday" and "tomorrow" getters
 
 #### Start and End of Period Calculations
 
@@ -233,6 +234,22 @@ The following operations are now available on a `DateTime` object:
   ```dart
   final DateTime today = DateTime(2024, 9, 10); // Tuesday
   final DateTime sunday = today.firstDayOfWeek; // Sunday
+  ```
+
+#### "Yesterday" and "tomorrow" getters
+
+- `yesterday`: returns a new `DateTime` object for the previous start of day.
+
+  ```dart
+  final DateTime now = DateTime.now(); // 2024-10-07 13:37:48.274
+  final DateTime yesterday = DateTime(0).yesterday; // 2024-10-06 00:00:00.000
+  ```
+
+- `tomorrow`: returns a new `DateTime` object for tomorrow's start of day.
+
+  ```dart
+  final DateTime now = DateTime.now(); // 2024-10-07 13:37:48.274
+  final DateTime tomorrow = DateTime(0).tomorrow; // 2024-10-08 00:00:00.000
   ```
 
 ### JWT Parsing
