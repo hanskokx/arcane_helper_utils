@@ -12,15 +12,10 @@ topics:
 
 environment:
   sdk: ^3.5.2
-  flutter: ">=1.17.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
   freezed_annotation: ^2.4.4
   week_number: ^1.1.0
 
 dev_dependencies:
   arcane_analysis: ^1.0.1
-  flutter_test:
-    sdk: flutter

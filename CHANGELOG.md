@@ -1,3 +1,9 @@
+## 1.1.0
+
+- [BREAKING] Removed `Unfocuser` widget to ensure pure Dart compatibility.
+
+To continue using `Unfocuser`, add `unfocuser: ^1.0.0` to your pubspec.yaml.
+
 ## 1.0.4
 
 - Added `yesterday` and `tomorrow` extensions to `DateTime`
