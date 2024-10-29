@@ -1,4 +1,6 @@
 import "package:arcane_helper_utils/arcane_helper_utils.dart";
+import "package:arcane_helper_utils/src/extensions/color.dart";
+import "package:pure_dart_ui/pure_dart_ui.dart";
 
 void main() {
   // DateTime
@@ -33,4 +35,10 @@ void main() {
   const String lowercase = "hello";
   final String capitalized = lowercase.capitalize;
   print(capitalized); // "Hello"
+
+  // Color
+  const Color myColor = Color.fromARGB(255, 153, 97, 227);
+  final Color luminanceBasedcolor =
+      myColor.isDark ? const Color(0xff000000) : const Color(0xffffffff);
+  print(luminanceBasedcolor); // Color(0xff000000)
 }

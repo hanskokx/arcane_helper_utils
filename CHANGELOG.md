@@ -1,3 +1,8 @@
+## 1.1.1
+
+- Added `Color` extension for luminance. Thanks, @rania-run!
+- Fixed a bug in the `splitByLength` extension on `String`
+
 ## 1.1.0
 
 - [BREAKING] Removed `Unfocuser` widget to ensure pure Dart compatibility.

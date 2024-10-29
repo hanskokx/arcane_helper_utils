@@ -63,8 +63,13 @@ extension Split on String {
     String string = this;
 
     while (string.isNotEmpty) {
-      parts.add(string.substring(0, length));
-      string = string.substring(length);
+      if (string.length >= length) {
+        parts.add(string.substring(0, length));
+        string = string.substring(length);
+      } else {
+        parts.add(string.substring(0, string.length));
+        string = string.substring(string.length);
+      }
     }
     return parts;
   }
