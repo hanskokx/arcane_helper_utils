@@ -92,10 +92,8 @@ extension JWTUtility on String {
         break;
       case 2:
         output += "==";
-        break;
       case 3:
         output += "=";
-        break;
       default:
         throw Exception('Illegal base64url string!"');
     }
