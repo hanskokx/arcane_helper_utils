@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import "package:arcane_helper_utils/arcane_helper_utils.dart";
-import "package:arcane_helper_utils/src/extensions/color.dart";
 import "package:pure_dart_ui/pure_dart_ui.dart";
 
 void main() {
