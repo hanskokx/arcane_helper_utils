@@ -1,3 +1,7 @@
+## 1.1.3
+
+- Removes `Color` extension due to an incompatibility with Flutter. Sorry, @rania-run!
+
 ## 1.1.2
 
 - Ensure new `Color` extensions are exported from the package.

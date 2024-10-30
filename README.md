@@ -15,7 +15,6 @@ providing utility functions and extensions that simplify common tasks.
   class, making it easier to format dates and calculate differences.
 - **String Extensions**: Enhances the `String` class by adding new methods for
   common transformations and checks, including JWT parsing.
-- **Color Extensions**: Adds the ability to determine the luminance of a `Color`
 
 ## Getting Started
 
@@ -330,16 +329,6 @@ objects:
 
 Additionally, the `CommonString` class provides a quick shortcut to common
 strings, such as punctuation marks that are otherwise cumbersome to find or type.
-
-### Color Examples
-
-The following utilities have been added to enhance working with `Color` objects:
-
-- `luminance`: Computes the luminance of a given color.
-
-  ```dart
-  final Color luminanceBasedColor = myColor.isDark ? Colors.white : Colors.black;
-  ```
 
 ## Contributing
 
