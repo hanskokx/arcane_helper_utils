@@ -1,3 +1,7 @@
+## 1.1.2
+
+- Ensure new `Color` extensions are exported from the package.
+
 ## 1.1.1
 
 - Added `Color` extension for luminance. Thanks, @rania-run!
