@@ -15,6 +15,7 @@ providing utility functions and extensions that simplify common tasks.
   class, making it easier to format dates and calculate differences.
 - **String Extensions**: Enhances the `String` class by adding new methods for
   common transformations and checks, including JWT parsing.
+- **List Extensions**: Adds a new `unique` operator for filtering `List` items.
 
 ## Getting Started
 
@@ -329,6 +330,25 @@ objects:
 
 Additionally, the `CommonString` class provides a quick shortcut to common
 strings, such as punctuation marks that are otherwise cumbersome to find or type.
+
+### List Extensions
+
+The following extensions have been added to the `List` object:
+
+- `unique([Id Function(E element)? id, bool inplace = true])`: Filters a list
+  by a given element, returning only non-duplicate values. Can return either a
+  new `List` or filter the existing list by specifying the `inplace` option.
+
+  ```dart
+  final List<String> myList = [
+    Item(value: "Hello"),
+    Item(value: "Hello"),
+    Item(value: "World"),
+    Item(value: "World"),
+  ];
+
+  myList.unique((item) => item.value);
+  // [Item(value: "Hello"), Item(value: "World")]
 
 ## Contributing
 

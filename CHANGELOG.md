@@ -1,3 +1,7 @@
+## 1.1.4
+
+- Added the `unique` extension for `List` objects.
+
 ## 1.1.3
 
 - Removes `Color` extension due to an incompatibility with Flutter. Sorry, @rania-run!
