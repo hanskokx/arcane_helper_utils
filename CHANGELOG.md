@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Added additional documentation and examples for new extension.
+
 ## 1.2.0
 
 - Added the `unique` extension for `List` objects.

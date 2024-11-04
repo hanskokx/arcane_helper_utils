@@ -340,15 +340,17 @@ The following extensions have been added to the `List` object:
   new `List` or filter the existing list by specifying the `inplace` option.
 
   ```dart
-  final List<String> myList = [
-    Item(value: "Hello"),
-    Item(value: "Hello"),
-    Item(value: "World"),
-    Item(value: "World"),
+  final list = [1, 2, 2, 3, 4, 4];
+  final uniqueList = list.unique();
+  print(uniqueList); // Output: [1, 2, 3, 4]
+  final people = [
+    Person(id: 1, name: 'Alice'),
+    Person(id: 2, name: 'Bob'),
+    Person(id: 1, name: 'Alice Duplicate'),
   ];
-
-  myList.unique((item) => item.value);
-  // [Item(value: "Hello"), Item(value: "World")]
+  final uniquePeople = people.unique((person) => person.id);
+  print(uniquePeople.map((p) => p.name)); // Output: ['Alice', 'Bob']
+  ```
 
 ## Contributing
 

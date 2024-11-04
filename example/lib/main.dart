@@ -35,4 +35,15 @@ void main() {
   const String lowercase = "hello";
   final String capitalized = lowercase.capitalize;
   print(capitalized); // "Hello"
+
+  final list = [1, 2, 2, 3, 4, 4];
+  final uniqueList = list.unique();
+  print(uniqueList); // Output: [1, 2, 3, 4]
+  final people = [
+    Person(id: 1, name: "Alice"),
+    Person(id: 2, name: "Bob"),
+    Person(id: 1, name: "Alice Duplicate"),
+  ];
+  final uniquePeople = people.unique((person) => person.id);
+  print(uniquePeople.map((p) => p.name)); // Output: ['Alice', 'Bob']
 }
