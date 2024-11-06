@@ -328,6 +328,20 @@ objects:
   final String capitalized = text.capitalize; // "Hello"
   ```
 
+- `capitalizeWords`: Capitalizes the first letter of each word in a given `String`
+
+  ```dart
+  String text = "hello world";
+  String capitalizedWords = text.capitalizeWords; // "Hello World"
+  ```
+
+- `spacePascalCase`: Adds spaces between words in a PascalCase `String`
+
+  ```dart
+  String text = "ArcaneHelperUtils";
+  String spaced = text.spacePascalCase; // "Arcane Helper Utils"
+  ```
+
 Additionally, the `CommonString` class provides a quick shortcut to common
 strings, such as punctuation marks that are otherwise cumbersome to find or type.
 

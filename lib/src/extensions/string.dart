@@ -91,4 +91,46 @@ extension TextManipulation on String {
     if (isEmpty) return "";
     return "${this[0].toUpperCase()}${substring(1)}";
   }
+
+  /// Capitalizes the first letter of each word in the string.
+  ///
+  /// This method returns a new string where the first character of each word
+  /// is converted to uppercase, while the rest of the string remains unchanged.
+  ///
+  /// Example:
+  /// ```dart
+  /// String text = "hello world";
+  /// String capitalizedWords = text.capitalizeWords; // "Hello World"
+  /// ```
+  String get capitalizeWords {
+    final strings = split(" ");
+    return strings.map((s) => s.capitalize).join(" ");
+  }
+
+  /// Adds spaces between words in a PascalCase string.
+  ///
+  /// This method returns a new string where the capitalized words in a
+  /// PascalCase string are separated by spaces. The rest of the string remains
+  /// unchanged, aside from whitespace at the beginning and the end of the
+  /// string being stripped.
+  ///
+  /// Example:
+  /// ```dart
+  /// String text = "ArcaneHelperUtils";
+  /// String spaced = text.spacePascalCase; // "Arcane Helper Utils"
+  /// ```
+  String get spacePascalCase {
+    final List<String> strings = split(
+      "",
+    );
+    String output = "";
+    for (final String char in strings) {
+      if (RegExp(r"[A-ZÄÖÅ]").hasMatch(char)) {
+        output += " $char";
+      } else {
+        output += char;
+      }
+    }
+    return output.trim();
+  }
 }
