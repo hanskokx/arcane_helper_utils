@@ -1,3 +1,9 @@
+## 1.2.2
+
+- Added additional `String` manipulation utilities, including:
+  - `capitalizeWords`: Capitalizes the first letter of each word in the string.
+  - `spacePascalCase`: Adds spaces between words in a PascalCase string.
+
 ## 1.2.1
 
 - Added additional documentation and examples for new extension.
