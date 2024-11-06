@@ -1,3 +1,7 @@
+## 1.2.5
+
+- Null `String`s being manipulated should return `null` instead of an empty `String`
+
 ## 1.2.4
 
 - Made `String` manipulation utilities available for nullable objects

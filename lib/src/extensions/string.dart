@@ -87,8 +87,8 @@ extension TextManipulation on String? {
   /// String text = "hello";
   /// String capitalized = text.capitalize; // "Hello"
   /// ```
-  String get capitalize {
-    if (isNullOrEmpty) return "";
+  String? get capitalize {
+    if (isNullOrEmpty) return null;
     return "${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}";
   }
 
@@ -102,8 +102,8 @@ extension TextManipulation on String? {
   /// String text = "hello world";
   /// String capitalizedWords = text.capitalizeWords; // "Hello World"
   /// ```
-  String get capitalizeWords {
-    if (isNullOrEmpty) return "";
+  String? get capitalizeWords {
+    if (isNullOrEmpty) return null;
     final strings = this!.split(" ");
     return strings.map((s) => s.capitalize).join(" ");
   }
@@ -120,8 +120,8 @@ extension TextManipulation on String? {
   /// String text = "ArcaneHelperUtils";
   /// String spaced = text.spacePascalCase; // "Arcane Helper Utils"
   /// ```
-  String get spacePascalCase {
-    if (isNullOrEmpty) return "";
+  String? get spacePascalCase {
+    if (isNullOrEmpty) return null;
     final List<String> strings = this!.split(
       "",
     );
