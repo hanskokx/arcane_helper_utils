@@ -1,3 +1,7 @@
+## 1.2.3
+
+- Adjusted `capitalize` extension to convert remaining letters to lowercase
+
 ## 1.2.2
 
 - Added additional `String` manipulation utilities, including:

@@ -80,7 +80,7 @@ extension TextManipulation on String {
   /// Capitalizes the first letter of the string.
   ///
   /// This method returns a new string where the first character is converted
-  /// to uppercase, while the rest of the string remains unchanged.
+  /// to uppercase, while the rest of the string is converted to lowercase.
   ///
   /// Example:
   /// ```dart
@@ -89,7 +89,7 @@ extension TextManipulation on String {
   /// ```
   String get capitalize {
     if (isEmpty) return "";
-    return "${this[0].toUpperCase()}${substring(1)}";
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 
   /// Capitalizes the first letter of each word in the string.
