@@ -1,3 +1,7 @@
+## 1.2.4
+
+- Made `String` manipulation utilities available for nullable objects
+
 ## 1.2.3
 
 - Adjusted `capitalize` extension to convert remaining letters to lowercase

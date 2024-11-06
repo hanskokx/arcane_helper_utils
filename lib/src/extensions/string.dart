@@ -76,7 +76,7 @@ extension Split on String {
 }
 
 /// An extension on `String` to perform text manipulation tasks.
-extension TextManipulation on String {
+extension TextManipulation on String? {
   /// Capitalizes the first letter of the string.
   ///
   /// This method returns a new string where the first character is converted
@@ -88,8 +88,8 @@ extension TextManipulation on String {
   /// String capitalized = text.capitalize; // "Hello"
   /// ```
   String get capitalize {
-    if (isEmpty) return "";
-    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
+    if (isNullOrEmpty) return "";
+    return "${this![0].toUpperCase()}${this!.substring(1).toLowerCase()}";
   }
 
   /// Capitalizes the first letter of each word in the string.
@@ -103,7 +103,8 @@ extension TextManipulation on String {
   /// String capitalizedWords = text.capitalizeWords; // "Hello World"
   /// ```
   String get capitalizeWords {
-    final strings = split(" ");
+    if (isNullOrEmpty) return "";
+    final strings = this!.split(" ");
     return strings.map((s) => s.capitalize).join(" ");
   }
 
@@ -120,7 +121,8 @@ extension TextManipulation on String {
   /// String spaced = text.spacePascalCase; // "Arcane Helper Utils"
   /// ```
   String get spacePascalCase {
-    final List<String> strings = split(
+    if (isNullOrEmpty) return "";
+    final List<String> strings = this!.split(
       "",
     );
     String output = "";
