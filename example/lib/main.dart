@@ -36,17 +36,17 @@ void main() {
 
   // Capitalize a string
   const String lowercase = "hello";
-  final String capitalized = lowercase.capitalize;
+  final String capitalized = lowercase.capitalize!;
   print(capitalized); // "Hello"
 
   // Capitalize words in a string
   const String lowercaseWords = "hello world";
-  final String capitalizedWords = lowercaseWords.capitalizeWords;
+  final String capitalizedWords = lowercaseWords.capitalizeWords!;
   print(capitalizedWords); // "Hello World"
 
   // Space out PascalCase words
   const String pascalCase = "ArcaneHelperUtils";
-  final String spacedOut = pascalCase.spacePascalCase;
+  final String spacedOut = pascalCase.spacePascalCase!;
   print(spacedOut); // "Arcane Helper Utils";
 
   // * Lists
@@ -67,6 +67,15 @@ void main() {
   // Process the existing list, in place
   people.unique((person) => person.id);
   print(people.map((p) => p.name)); // Output: ['Alice', 'Bob']
+
+  // * Dynamic debug printing
+  // Debug print the `Person` object before returning the name
+  final String alice = const Person(id: 0, name: "Alice").printValue<Person>().name;
+  print(alice); // Output: 'Alice'
+
+  // Debug print the `Person` object with a label before returning the name
+  final String bob = const Person(id: 1, name: "Bob").printValue<Person>("Person").name;
+  print(bob); // Output: 'Bob'
 }
 
 class Person {

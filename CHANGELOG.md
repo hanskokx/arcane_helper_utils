@@ -1,3 +1,19 @@
+## 1.2.6
+
+- Added the `printValue()` extension.
+  The `printValue()` extension can be used to print a value to the console
+  before returning that same value.
+
+  Example:
+
+  ```dart
+  // Print the `textTheme` object to the console before returning it
+  Text(
+    'Hello, world',
+    style: Theme.of(context).textTheme.printValue().headlineMedium,
+  ),
+  ```
+
 ## 1.2.5
 
 - Null `String`s being manipulated should return `null` instead of an empty `String`
