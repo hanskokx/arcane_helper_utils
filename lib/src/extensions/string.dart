@@ -8,6 +8,10 @@ abstract class CommonString {
   /// A bullet point (`•`) is a small, round symbol used in typography to indicate a new
   /// item in a list or to separate items in a series.
   static const String bulletPoint = "•";
+
+  /// A non-breaking space is similar to a standard space, however it prevents automatic
+  /// line breaks.
+  static const String nbsp = "\u00A0";
 }
 
 /// An extension that adds convenience methods to handle nullability and

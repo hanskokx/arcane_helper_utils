@@ -1,3 +1,8 @@
+## 1.3.0
+
+- Added a non-breaking space character to `CommonString` as `CommonString.nbsp`
+- Updated package dependencies
+
 ## 1.2.6
 
 - Added the `printValue()` extension.
