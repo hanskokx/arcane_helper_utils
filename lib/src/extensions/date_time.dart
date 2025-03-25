@@ -89,7 +89,8 @@ extension DaysInMonth on DateTime {
 /// An extension on `DateTime` to check if a date is today or if it is the same day as another date.
 extension IsToday on DateTime {
   /// Returns `true` if the current date is today.
-  bool get isToday => DateTime.now().difference(this).inDays == 0;
+  bool get isToday =>
+      DateTime.now().startOfDay.difference(this.startOfDay).inMilliseconds == 0;
 
   /// Returns `true` if the current date is the same day as [other].
   bool isSameDayAs(DateTime other) =>

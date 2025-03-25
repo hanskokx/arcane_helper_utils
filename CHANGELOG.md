@@ -1,3 +1,8 @@
+## 1.3.2
+
+- Added `isEmptyOrNull` and `isNotEmptyOrNull` extensions for `List` and `String` objects. These extensions are identical to `isNullOrEmpty` and `isNotNullOrEmpty`, respectively.
+- Fixed a bug in the `DateTime` extension that caused incorrect results when comparing dates using `isToday`.
+
 ## 1.3.1
 
 - Added the `isNullOrEmpty` and `isNotNullOrEmpty` extensions for `List` objects.

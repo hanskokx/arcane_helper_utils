@@ -29,7 +29,25 @@ extension Nullability on String? {
   ///   print("The string is not null and not empty");
   /// }
   /// ```
+  ///
+  /// This is identical to [isNotEmptyOrNull].
   bool get isNotNullOrEmpty => !isNullOrEmpty;
+
+  /// Returns `true` if the `String?` is neither `null` nor contains only whitespace.
+  ///
+  /// This is useful for cases where you want to check if a nullable string has a valid
+  /// non-empty, non-whitespace value.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// String? example = "Hello";
+  /// if (example.isNotEmptyOrNull) {
+  ///   print("The string is not null and not empty");
+  /// }
+  /// ```
+  ///
+  /// This is identical to [isNotNullOrEmpty].
+  bool get isNotEmptyOrNull => isNotNullOrEmpty;
 
   /// Returns `true` if the `String?` is either `null` or contains only whitespace.
   ///
@@ -43,7 +61,25 @@ extension Nullability on String? {
   ///   print("The string is null or empty");
   /// }
   /// ```
+  ///
+  /// This is identical to [isEmptyOrNull].
   bool get isNullOrEmpty => this == null || (this ?? "").trim().isEmpty;
+
+  /// Returns `true` if the `String?` is either `null` or contains only whitespace.
+  ///
+  /// This is a handy utility to check if a nullable string is either not assigned
+  /// or effectively empty (including strings with only whitespace characters).
+  ///
+  /// Example usage:
+  /// ```dart
+  /// String? example = null;
+  /// if (example.isEmptyOrNull) {
+  ///   print("The string is null or empty");
+  /// }
+  /// ```
+  ///
+  /// This is identical to [isNullOrEmpty].
+  bool get isEmptyOrNull => isNullOrEmpty;
 }
 
 /// An extension on `String` to split the string into parts of a specified length.

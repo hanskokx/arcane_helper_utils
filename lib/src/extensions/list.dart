@@ -52,7 +52,7 @@ extension Unique<E, Id> on List<E> {
 extension ListNullability on List? {
   /// Returns `true` if the list is either not null and not empty.
   ///
-  /// This is the inverse of [isNullOrEmpty].
+  /// This is the inverse of [isNotEmptyOrNull].
   ///
   /// Example usage:
   /// ```dart
@@ -65,7 +65,28 @@ extension ListNullability on List? {
   /// list = null;
   /// print(list.isNotNullOrEmpty); // Output: false
   /// ```
+  ///
+  /// This is identical to [isNotNullOrEmpty].
   bool get isNotNullOrEmpty => !isNullOrEmpty;
+
+  /// Returns `true` if the list is either not null and not empty.
+  ///
+  /// This is the inverse of [isEmptyOrNull].
+  ///
+  /// Example usage:
+  /// ```dart
+  /// List<int>? list = [1, 2, 3];
+  /// print(list.isNotEmptyOrNull); // Output: true
+  ///
+  /// list = [];
+  /// print(list.isNotEmptyOrNull); // Output: false
+  ///
+  /// list = null;
+  /// print(list.isNotEmptyOrNull); // Output: false
+  /// ```
+  ///
+  /// This is identical to [isNotNullOrEmpty].
+  bool get isNotEmptyOrNull => !isNullOrEmpty;
 
   /// Returns `true` if the list is either null or empty.
   ///
@@ -80,5 +101,24 @@ extension ListNullability on List? {
   /// list = [1, 2, 3];
   /// print(list.isNullOrEmpty); // Output: false
   /// ```
+  ///
+  /// This is identical to [isEmptyOrNull].
   bool get isNullOrEmpty => this == null || this!.isEmpty;
+
+  /// Returns `true` if the list is either null or empty.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// List<int>? list = null;
+  /// print(list.isEmptyOrNull); // Output: true
+  ///
+  /// list = [];
+  /// print(list.isEmptyOrNull); // Output: true
+  ///
+  /// list = [1, 2, 3];
+  /// print(list.isEmptyOrNull); // Output: false
+  /// ```
+  ///
+  /// This is identical to [isEmptyOrNull].
+  bool get isEmptyOrNull => isNullOrEmpty;
 }

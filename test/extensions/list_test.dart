@@ -33,16 +33,19 @@ void main() {
   group("ListNullability", () {
     test("isNullOrEmpty returns true for null list", () {
       List<int>? list;
+      expect(list.isEmptyOrNull, true);
       expect(list.isNullOrEmpty, true);
     });
 
     test("isNullOrEmpty returns true for empty list", () {
       final List<int> list = [];
+      expect(list.isEmptyOrNull, true);
       expect(list.isNullOrEmpty, true);
     });
 
     test("isNullOrEmpty returns false for non-empty list", () {
       final list = [1, 2, 3];
+      expect(list.isEmptyOrNull, false);
       expect(list.isNullOrEmpty, false);
     });
 
@@ -51,9 +54,13 @@ void main() {
       final emptyList = <int>[];
       final nonEmptyList = [1, 2, 3];
 
-      expect(nullList.isNotNullOrEmpty, false);
-      expect(emptyList.isNotNullOrEmpty, false);
-      expect(nonEmptyList.isNotNullOrEmpty, true);
+      expect(nullList.isEmptyOrNull, !nullList.isNotEmptyOrNull);
+      expect(emptyList.isEmptyOrNull, !emptyList.isNotEmptyOrNull);
+      expect(nonEmptyList.isEmptyOrNull, !nonEmptyList.isNotEmptyOrNull);
+
+      expect(nullList.isNullOrEmpty, !nullList.isNotNullOrEmpty);
+      expect(emptyList.isNullOrEmpty, !emptyList.isNotNullOrEmpty);
+      expect(nonEmptyList.isNullOrEmpty, !nonEmptyList.isNotNullOrEmpty);
     });
   });
 }
