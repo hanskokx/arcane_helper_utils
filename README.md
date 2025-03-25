@@ -354,16 +354,38 @@ The following extensions have been added to the `List` object:
   new `List` or filter the existing list by specifying the `inplace` option.
 
   ```dart
-  final list = [1, 2, 2, 3, 4, 4];
-  final uniqueList = list.unique();
+  const List<int> list = [1, 2, 2, 3, 4, 4];
+  final List<int> uniqueList = list.unique();
   print(uniqueList); // Output: [1, 2, 3, 4]
-  final people = [
+  const List<Person> people = [
     Person(id: 1, name: 'Alice'),
     Person(id: 2, name: 'Bob'),
     Person(id: 1, name: 'Alice Duplicate'),
   ];
-  final uniquePeople = people.unique((person) => person.id);
+  final List<Person> uniquePeople = people.unique((person) => person.id);
   print(uniquePeople.map((p) => p.name)); // Output: ['Alice', 'Bob']
+  ```
+
+- `isNullOrEmpty`: Checks if a list is either null or empty.
+
+  ```dart
+  const List<int> list = [1, 2, 3];
+  print(list.isNullOrEmpty); // Output: false
+  final List<int> emptyList = <int>[];
+  print(emptyList.isNullOrEmpty); // Output: true
+  final List<int>? nullList = null;
+  print(nullList.isNullOrEmpty); // Output: true
+  ```
+
+- `isNullOrEmpty`: Checks if a list is either null or empty.
+
+  ```dart
+  final List<int> list = [1, 2, 3];
+  print(list.isNullOrEmpty); // Output: false
+  final List<int> emptyList = <int>[];
+  print(emptyList.isNullOrEmpty); // Output: true
+  final List<int>? nullList = null;
+  print(nullList.isNullOrEmpty); // Output: true
   ```
 
 ## Contributing

@@ -44,3 +44,41 @@ extension Unique<E, Id> on List<E> {
     return list;
   }
 }
+
+/// An extension on nullable `List` to provide convenience methods for checking nullability and emptiness.
+///
+/// This extension adds getters that make it easier to check if a list is null,
+/// empty, or both in a single operation.
+extension ListNullability on List? {
+  /// Returns `true` if the list is either not null and not empty.
+  ///
+  /// This is the inverse of [isNullOrEmpty].
+  ///
+  /// Example usage:
+  /// ```dart
+  /// List<int>? list = [1, 2, 3];
+  /// print(list.isNotNullOrEmpty); // Output: true
+  ///
+  /// list = [];
+  /// print(list.isNotNullOrEmpty); // Output: false
+  ///
+  /// list = null;
+  /// print(list.isNotNullOrEmpty); // Output: false
+  /// ```
+  bool get isNotNullOrEmpty => !isNullOrEmpty;
+
+  /// Returns `true` if the list is either null or empty.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// List<int>? list = null;
+  /// print(list.isNullOrEmpty); // Output: true
+  ///
+  /// list = [];
+  /// print(list.isNullOrEmpty); // Output: true
+  ///
+  /// list = [1, 2, 3];
+  /// print(list.isNullOrEmpty); // Output: false
+  /// ```
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
+}

@@ -27,7 +27,7 @@ class Ticker {
     required Duration timeout,
     Duration interval = const Duration(seconds: 1),
   }) {
-    final int ticks = timeout.inSeconds ~/ interval.inSeconds;
+    final int ticks = timeout.inMicroseconds ~/ interval.inMicroseconds;
     return Stream.periodic(interval, (x) => ticks - x - 1).take(ticks);
   }
 }

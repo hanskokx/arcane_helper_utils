@@ -1,3 +1,9 @@
+## 1.3.1
+
+- Added the `isNullOrEmpty` and `isNotNullOrEmpty` extensions for `List` objects.
+- Fixed a bug in the `Ticker` extension that prevented intervals shorter than 1 second from being used.
+- [chore] Added unit tests for all extensions and utilities in the package.
+
 ## 1.3.0
 
 - Added a non-breaking space character to `CommonString` as `CommonString.nbsp`
