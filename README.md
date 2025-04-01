@@ -14,7 +14,9 @@ providing utility functions and extensions that simplify common tasks.
 - **DateTime Extensions**: Adds additional functionality to the `DateTime`
   class, making it easier to format dates and calculate differences.
 - **String Extensions**: Enhances the `String` class by adding new methods for
-  common transformations and checks, including JWT parsing.
+  common transformations and checks.
+- **JWT Utilities**: Provides getters to parse a JWT token from a `String`, then
+  get common properties from it.
 - **List Extensions**: Adds a new `unique` operator for filtering `List` items.
 
 ## Getting Started
@@ -260,11 +262,18 @@ making it easier to handle JSON Web Tokens directly as `String` objects.
 
 Here are some examples of how these methods can be utilized:
 
+- Parse a JWT string
+
+  ```dart
+  String token = "your.jwt.token";
+  final JwtPayload? payload = token.jwt; // Returns the JWT's payload
+  ```
+
 - Extracting the email address (`jwt["sub"]`)
 
   ```dart
   String jwt = "your.jwt.token";
-  final String? email = jwt.jwtEmail(); // Returns the email address in the JWT
+  final String? email = jwt.jwt.email; // Returns the email address in the JWT
   ```
 
 - Extracting the token expiration time (`jwt["exp"]`)
@@ -272,14 +281,28 @@ Here are some examples of how these methods can be utilized:
   ```dart
   String jwt = "your.jwt.token";
   // Returns a `DateTime?` when the token expires
-  final DateTime? email = jwt.jwtExpiryTime();
+  final DateTime? email = jwt.jwt.expiryTime;
   ```
 
 - Extracting the user ID (`jwt["uid"]`)
 
   ```dart
   String jwt = "your.jwt.token";
-  final String? uid = jwt.jwtUserId(); // Returns the UID value from the token
+  final String? uid = jwt.jwt.userId; // Returns the UID value from the token
+  ```
+
+- Extracting the given name (`jwt["given_name"]`)
+
+  ```dart
+  String jwt = "your.jwt.token";
+  final String? uid = jwt.jwt.givenName; // Returns the given name from the token
+  ```
+
+- Extracting the family name (`jwt["family_name"]`)
+
+  ```dart
+  String jwt = "your.jwt.token";
+  final String? uid = jwt.jwt.familyName; // Returns the family name from the token
   ```
 
 ### String Utilities

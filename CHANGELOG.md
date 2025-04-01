@@ -1,3 +1,41 @@
+## 1.4.0
+
+- [BREAKING] JWT-related extensions have been reworked.
+
+Old:
+
+```dart
+String token = "your.jwt.token";
+DateTime? expiry = token.jwtExpiryTime();
+String? userId = token.jwtUserId();
+String? email = token.jwtEmail();
+```
+
+New:
+
+```dart
+String token = "your.jwt.token";
+DateTime? expiry = token.jwt.expiryTime;
+String? userId = token.jwt.userId;
+String? email = token.jwt.email;
+
+// Added:
+JwtPayload? token.jwt;
+String? givenName = token.jwt.givenName;
+String? familyName = token.jwt.familyName;
+```
+
+Additionally, the exceptions thrown when parsing an invalid JWT have been
+updated.
+
+```dart
+  String email = "invalid".jwtEmail() // Previously threw Exception("invalid token")
+  String email = "invalid".jwt.email // Now throws InvalidTokenException()
+
+  String email = "".jwtEmail() // Previously threw Exception("invalid payload")
+  String email = "".jwt.email // Now throws InvalidPayloadException()
+```
+
 ## 1.3.2
 
 - Added `isEmptyOrNull` and `isNotEmptyOrNull` extensions for `List` and `String` objects. These extensions are identical to `isNullOrEmpty` and `isNotNullOrEmpty`, respectively.
