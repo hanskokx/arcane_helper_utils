@@ -17,7 +17,10 @@ providing utility functions and extensions that simplify common tasks.
   common transformations and checks.
 - **JWT Utilities**: Provides getters to parse a JWT token from a `String`, then
   get common properties from it.
-- **List Extensions**: Adds a new `unique` operator for filtering `List` items.
+- **List Extensions**: Adds a new `unique` operator for filtering `List` items,
+  as well as getters for `isNullOrEmpty`, `isEmptyOrNull`, `isNotNullOrEmpty`,
+  and `isNotEmptyOrNull`. Furthermore, an `equals` extension has been introduced
+  which can be used to compare two lists.
 
 ## Getting Started
 
@@ -80,7 +83,7 @@ converted from a `String?` to an `int?`:
 
 ```dart
 @freezed
-class MyFreezedClass with _$MyFreezedClass {
+abstract class MyFreezedClass with _$MyFreezedClass {
   const factory MyFreezedClass({
     @DecimalConverter() double? valueIsMaybeNull,
     @DecimalConverter() double? valueIsDouble,
@@ -409,6 +412,41 @@ The following extensions have been added to the `List` object:
   print(emptyList.isNullOrEmpty); // Output: true
   final List<int>? nullList = null;
   print(nullList.isNullOrEmpty); // Output: true
+  ```
+
+- `equals`: Compares two lists to see if they are equal.
+
+  ```dart
+  List<int?>? list1 = [1, 2, null, 4];
+  List<int?>? list2 = [1, 2, null, 4];
+  List<int?>? list3 = [1, 2, 3, 4];
+  List<int?>? list4 = null;
+  List<int?>? list5 = [1, 2, 3, null];
+
+  print(list1.equals(list2)); // Output: true
+  print(list1.equals(list3)); // Output: false
+  print(list1.equals(list4)); // Output: false
+  print(list4.equals(null));  // Output: true
+  print(list5.equals([1,2,3,null])); // Output: true
+
+  // Example with ignoreSorting:
+  List<int>? list6 = [1, 2, 3];
+  List<int>? list7 = [3, 1, 2];
+
+  // Output: true (order doesn't matter)
+  print(list6.equals(list7, ignoreSorting: true));
+
+  // Output: false (order matters)
+  print(list6.equals(list7, ignoreSorting: false));
+
+  List<String>? list8 = ["apple", "banana", "cherry"];
+  List<String>? list9 = ["cherry", "apple", "banana"];
+
+  // Output: true
+  print(list8.equals(list9, ignoreSorting: true));
+
+  // Output: false
+  print(list8.equals(list9, ignoreSorting: false));
   ```
 
 ## Contributing

@@ -1,3 +1,8 @@
+## 1.4.1
+
+- Added a `List` equality extension, `equals`.
+- Fixed an issue with the `List` extension `unique` that may have caused null-safety issues.
+
 ## 1.4.0
 
 - [BREAKING] JWT-related extensions have been reworked.
