@@ -135,7 +135,9 @@ void main() {
     test("Empty lists", () {
       testEquality([], [], true);
     });
+
     test("List of different types", () {
+      testEquality(["a", "b", "c"], [1, 2, 3], false);
       testEquality(<int?>[], <String?>[], false);
     });
 
