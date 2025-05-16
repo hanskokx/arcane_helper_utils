@@ -1,3 +1,8 @@
+## 1.4.2
+
+- Added the `isLeapYear` extension to the `DateTime` and `int` objects.
+- Added the `FixedSizeList` class. See the readme and examples for details.
+
 ## 1.4.1
 
 - Added a `List` equality extension, `equals`.

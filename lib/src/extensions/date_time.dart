@@ -1,5 +1,3 @@
-import "package:week_number/iso.dart";
-
 /// An extension on `DateTime` to get the start and end of various time periods.
 extension StartAndEndOfPeriod on DateTime {
   /// Returns a `DateTime` object representing the start of the hour.
@@ -140,4 +138,18 @@ extension YesterdayAndTomorrow on DateTime {
   /// ```
   DateTime get tomorrow =>
       DateTime.now().add(const Duration(days: 1)).startOfDay;
+}
+
+extension IsLeapYear on DateTime {
+  /// Returns `true` if the year is a leap year, otherwise returns `false`.
+  bool get isLeapYear => year.isLeapYear;
+}
+
+extension IsIntLeapYear on int {
+  /// Returns `true` if the given value would be considered a leap year,
+  /// otherwise returns `false`.
+  bool get isLeapYear =>
+      !this.isNegative &&
+      this > 0 &&
+      ((this * 1073750999) & 3221352463) <= 126976;
 }

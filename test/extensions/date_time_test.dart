@@ -96,5 +96,16 @@ void main() {
           DateTime(now.year, now.month, now.day).add(const Duration(days: 1));
       expect(DateTime.now().tomorrow, expected);
     });
+
+    test("leap year calculations work as expected", () {
+      expect(DateTime(0).isLeapYear, false);
+      expect(DateTime(2024).isLeapYear, true);
+      expect(DateTime(2025).isLeapYear, false);
+
+      expect((-1).isLeapYear, false);
+      expect(0.isLeapYear, false);
+      expect(2024.isLeapYear, true);
+      expect(2025.isLeapYear, false);
+    });
   });
 }

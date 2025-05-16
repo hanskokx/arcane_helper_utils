@@ -258,6 +258,18 @@ The following operations are now available on a `DateTime` object:
   final DateTime tomorrow = DateTime(0).tomorrow; // 2024-10-08 00:00:00.000
   ```
 
+#### Leap Years
+
+- `isLeapYear`: returns a `bool` corresponding to whether a given year is a leap
+  year. This can also be used directly on an `int`.
+
+  ```dart
+  print(DateTime(2024).isLeapYear); // true
+  print(DateTime(2025).isLeapYear); // false
+  print(2024.isLeapYear); // true
+  print(2025.isLeapYear); // false
+  ```
+
 ### JWT Parsing
 
 These extensions enhance the `String` class with JWT-specific functionalities,

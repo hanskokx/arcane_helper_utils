@@ -19,6 +19,11 @@ void main() {
   print("Yesterday: $yesterday");
   print("Tomorrow: $tomorrow");
 
+  print(DateTime(2024).isLeapYear); // true
+  print(DateTime(2025).isLeapYear); // false
+  print(2024.isLeapYear); // true
+  print(2025.isLeapYear); // false
+
   // * Strings
   const String? nullString = null;
   const String emptyString = " ";
@@ -70,12 +75,45 @@ void main() {
 
   // * Dynamic debug printing
   // Debug print the `Person` object before returning the name
-  final String alice = const Person(id: 0, name: "Alice").printValue<Person>().name;
+  final String alice =
+      const Person(id: 0, name: "Alice").printValue<Person>().name;
   print(alice); // Output: 'Alice'
 
   // Debug print the `Person` object with a label before returning the name
-  final String bob = const Person(id: 1, name: "Bob").printValue<Person>("Person").name;
+  final String bob =
+      const Person(id: 1, name: "Bob").printValue<Person>("Person").name;
   print(bob); // Output: 'Bob'
+
+  // * Fixed-size lists
+  // Create a FixedSizeList with a capacity of 3 strings.
+  final recentLogs = FixedSizeList(3);
+
+  // Output: Initial recentLogs: []
+  print("Initial recentLogs: ${recentLogs.items}");
+
+  // Add some log messages.
+  recentLogs.add("Request received at 10:00 AM");
+  print("recentLogs after first add: ${recentLogs.items}");
+  // Output: recentLogs after first add: [Request received at 10:00 AM]
+  recentLogs.add("Processing request...");
+  print("recentLogs after second add: ${recentLogs.items}");
+  // Output: recentLogs after second add: [Request received at 10:00 AM, Processing request...]
+  recentLogs.add("Request completed at 10:05 AM");
+  print("recentLogs after third add: ${recentLogs.items}");
+  // Output: recentLogs after third add: [Request received at 10:00 AM, Processing request..., Request completed at 10:05 AM]
+
+  // Add one more log message, which will cause the oldest one to be removed.
+  recentLogs.add("Sending response...");
+  print("recentLogs after fourth add: ${recentLogs.items}");
+  // Output: recentLogs after fourth add: [Processing request..., Request completed at 10:05 AM, Sending response...]
+
+  // Try to modify the list through the 'items' getter (will throw an error).
+  try {
+    // This will cause an UnsupportedError because 'items' returns an unmodifiable list.
+    recentLogs.items.add("This will fail");
+  } catch (e) {
+    print("Error trying to modify items: $e");
+  }
 }
 
 class Person {
