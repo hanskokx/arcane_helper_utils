@@ -1,3 +1,7 @@
+## 1.4.3
+
+- [FIX] Ensure that `FixedSizeList` takes any type of object.
+
 ## 1.4.2
 
 - Added the `isLeapYear` extension to the `DateTime` and `int` objects.
