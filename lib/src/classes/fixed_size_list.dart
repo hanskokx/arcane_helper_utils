@@ -11,7 +11,19 @@ class FixedSizeList<T> implements List<T> {
   /// Creates a [FixedSizeList] with the specified [capacity].
   ///
   /// The initial list will be empty.
-  FixedSizeList(this._capacity, {List<T>? list}) : _list = list ?? <T>[];
+  FixedSizeList(
+    this._capacity, {
+    Iterable<T>? value,
+  }) : _list = List.from(value ?? <T>[]) {
+    assert(
+      this._capacity >= 0,
+      "List capacity must be a positive number",
+    );
+    assert(
+      _list.length <= _capacity,
+      "Initial list length cannot exceed capacity.",
+    );
+  }
 
   /// Adds a new [element] to the list.
   ///
@@ -25,27 +37,107 @@ class FixedSizeList<T> implements List<T> {
     }
   }
 
-  factory FixedSizeList.filled(int capacity, T fill) =>
-      FixedSizeList(capacity, list: List.filled(capacity, fill));
+  /// Creates a list of the given length with [fill] at each position.
+  ///
+  /// The [length] must be a non-negative integer. This value will become the
+  /// maximum length of the list. The resulting `FixedSizeList` is not growable.
+  ///
+  /// Example:
+  /// ```dart
+  /// final zeroList = FixedSizeList<int>.filled(3, 0); // [0, 0, 0]
+  /// ```
+  ///
+  /// After being created and filled, the list is no different from any other
+  /// fixed-length list created using any other [FixedSizeList] constructors.
+  ///
+  /// All elements of the created list share the same [fill] value.
+  /// ```dart
+  /// final shared = FixedSizeList.filled(3, []);
+  /// shared[0].add(499);
+  /// print(shared);  // [[499], [499], [499]]
+  /// ```
+  /// You can use [FixedSizeList.generate] to create a list with a fixed length
+  /// and a new object at each position.
+  /// ```dart
+  /// final unique = FixedSizeList.generate(3, (_) => []);
+  /// unique[0].add(499);
+  /// print(unique); // [[499], [], []]
+  /// ```
+  factory FixedSizeList.filled(int length, T fill) =>
+      FixedSizeList(length, value: List.filled(length, fill));
 
+  /// Creates a new empty list with a maximum capacity of [capacity].
+  ///
+  /// ```dart
+  /// final fixedLengthList = FixedSizeList.empty(3);
+  /// print(fixedLengthList); // []
+  /// fixedLengthList.add(1); // [1]
+  /// fixedLengthList.add(2); // [1, 2]
+  /// fixedLengthList.add(3); // [1, 2, 3]
+  /// fixedLengthList.add(4); // [2, 3, 4]
+  /// ```
   factory FixedSizeList.empty(int capacity) =>
-      FixedSizeList(capacity, list: List.empty());
+      FixedSizeList(capacity, value: []);
 
+  /// Creates a `FixedSizeList` containing all [elements].
+  ///
+  /// The [Iterator] of [elements] provides the order of the elements.
+  ///
+  /// All the [elements] should be instances of [T].
+  ///
+  /// Example:
+  /// ```dart
+  /// final numbers = <num>[1, 2, 3];
+  /// final listFrom = FixedSizeList<int>.from(numbers);
+  /// print(listFrom); // [1, 2, 3]
+  /// ```
+  /// The `elements` iterable itself may have any element type, so this
+  /// constructor can be used to down-cast a `FixedSizeList`, for example as:
+  /// ```dart import:convert
+  /// const jsonArray = '''
+  ///   [{"text": "foo", "value": 1, "status": true},
+  ///    {"text": "bar", "value": 2, "status": false}]
+  /// ''';
+  /// final List<dynamic> dynamicList = jsonDecode(jsonArray) as List<dynamic>;
+  /// final FixedSizeList<Map<String, dynamic>> fooData =
+  ///     FixedSizeList.from(dynamicList.where((x) => x is Map && x['text'] == 'foo'));
+  /// print(fooData); // [{text: foo, value: 1, status: true}]
+  /// ```
   factory FixedSizeList.from(Iterable elements) =>
-      FixedSizeList(elements.length, list: List.from(elements));
+      FixedSizeList(elements.length, value: List.from(elements));
 
+  /// Creates a `FixedSizeList` from [elements].
+  ///
+  /// The [Iterator] of [elements] provides the order of the elements.
+  ///
+  /// ```dart
+  /// final numbers = <int>[1, 2, 3];
+  /// final listOf = FixedSizeList<num>.of(numbers);
+  /// print(listOf); // [1, 2, 3]
+  /// ```
   factory FixedSizeList.of(Iterable<T> elements) =>
-      FixedSizeList(elements.length, list: List.of(elements));
+      FixedSizeList(elements.length, value: List.of(elements));
 
+  /// Generates a `FixedSizeList` of values.
+  ///
+  /// Creates a `FixedSizeList` with [length] positions and fills it with values
+  /// created by calling [generator] for each index in the range `0` ..
+  /// `length - 1` in increasing order.
+  ///
+  /// ```dart
+  /// final fixedLengthList =
+  ///     FixedSizeList<int>.generate(3, (int index) => index * index);
+  /// print(fixedLengthList); // [0, 1, 4]
+  /// ```
+  /// The [length] must be non-negative.
   factory FixedSizeList.generate(int length, T generator(int index)) =>
-      FixedSizeList(length, list: List.generate(length, generator));
+      FixedSizeList(length, value: List.generate(length, generator));
 
   /// Returns an unmodifiable view of the current items in the list.
   ///
   /// This prevents external modification of the internal list.
   List<T?> get items => List.unmodifiable(_list);
 
-  // Delegate all other List methods to the internal list
   @override
   int get length => _list.length;
 

@@ -1,3 +1,7 @@
+## 1.4.5
+
+- Added a `FixedSizeList.filled` constructor
+
 ## 1.4.4
 
 - Updated `FixedSizeList` to act more like a proper `List`
