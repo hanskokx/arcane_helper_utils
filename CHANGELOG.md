@@ -1,3 +1,7 @@
+## 1.4.4
+
+- Updated `FixedSizeList` to act more like a proper `List`
+
 ## 1.4.3
 
 - [FIX] Ensure that `FixedSizeList` takes any type of object.
