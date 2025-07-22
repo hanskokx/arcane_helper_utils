@@ -1,3 +1,7 @@
+## 1.4.6
+
+- Updated dependencies to the latest versions
+
 ## 1.4.5
 
 - Added a `FixedSizeList.filled` constructor
