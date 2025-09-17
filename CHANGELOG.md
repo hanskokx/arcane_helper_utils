@@ -1,3 +1,15 @@
+## 1.4.7
+
+- Added the `isExpired` and `expiresSoon` getters to JWT tokens.
+
+Example:
+
+```dart
+String token = "your.jwt.token";
+bool isExpired = token.isExpired;
+bool expiresSoon = token.expiresSoon;
+```
+
 ## 1.4.6
 
 - Updated dependencies to the latest versions
@@ -17,7 +29,7 @@
 ## 1.4.2
 
 - Added the `isLeapYear` extension to the `DateTime` and `int` objects.
-- Added the `FixedSizeList` class. See the readme and examples for details.
+- Added the `FixedSizeList` class. See the README and examples for details.
 
 ## 1.4.1
 

@@ -59,6 +59,18 @@ void main() {
       expect(expiry?.year, 2025); // Based on the exp value in the test token
     });
 
+    test("jwt.isExpired checks expiration on tokens properly", () {
+      final bool isExpired = validToken.jwt.isExpired;
+      expect(isExpired, isNotNull);
+      expect(isExpired, true);
+    });
+
+    test("jwt.expiresSoon checks expiration on tokens properly", () {
+      final bool expiresSoon = validToken.jwt.expiresSoon;
+      expect(expiresSoon, isNotNull);
+      expect(expiresSoon, true);
+    });
+
     test("jwt.expiryTime throws an exception for invalid token", () {
       expect(
         () => "invalid.token".jwt.expiryTime,

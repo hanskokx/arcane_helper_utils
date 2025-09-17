@@ -267,7 +267,13 @@ Here are some examples of how to use the utilities and extensions provided by th
       ```dart
       String jwt = "your.jwt.token";
       // Returns a `DateTime?` when the token expires
-      final DateTime? email = jwt.jwt.expiryTime;
+      final DateTime? expiryTime = jwt.jwt.expiryTime;
+      
+      // Returns `true` if the token has expired
+      final bool jwt.jwt.isExpired;
+
+      // Returns `true` if the token expires within the next (1) minute
+      final bool jwt.jwt.expiresSoon;
       ```
 
     - Extracting the user ID (`jwt["uid"]`)

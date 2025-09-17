@@ -149,6 +149,29 @@ extension JWTMapUtility on JwtPayload {
     }
   }
 
+  /// Determines whether the JWT has expired.
+  ///
+  /// If the current `expiryTime` is `null`, this value always returns `true`.
+  /// Otherwise, the current `expiryTime` is compared to the current `DateTime`.
+  /// Returns `true` if `DateTime.now()` is after the `expiryTime`. Otherwise,
+  /// returns `false`.
+  bool get isExpired {
+    if (expiryTime == null) return true;
+    return DateTime.now().isAfter(expiryTime!);
+  }
+
+  /// Determines whether the JWT will expire within the next (1) minute.
+  ///
+  /// If the current `expiryTime` is `null`, this value always returns `true`.
+  /// Otherwise, the current `expiryTime` is compared to the current `DateTime`,
+  /// plus (1) minute..
+  /// Returns `true` if the token expires within the next (1) minute. Otherwise,
+  /// returns `false`.
+  bool get expiresSoon {
+    if (expiryTime == null) return true;
+    return DateTime.now().add(const Duration(minutes: 1)).isAfter(expiryTime!);
+  }
+
   /// Extracts the user ID from the JWT payload.
   ///
   /// This method retrieves the `uid` field, which is typically the unique user identifier.
