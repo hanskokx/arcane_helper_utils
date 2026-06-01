@@ -1,6 +1,6 @@
 import "dart:convert";
 
-typedef JwtPayload = Map<String, dynamic>;
+typedef JwtPayload = Map<String, Object?>;
 
 /// An extension on `String` to extract useful information from JSON Web Tokens (JWT).
 ///

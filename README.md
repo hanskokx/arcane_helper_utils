@@ -9,6 +9,7 @@ providing utility functions and extensions that simplify common tasks.
 
 - **Ticker Utility**: A utility class that facilitates time-based actions, perfect for animations or any timing-related operations.
 - **JSON Converter**: Simplifies the process of converting JSON data into Dart objects.
+- **Recursive JSON Value Utilities**: Convert nested maps/lists into JSON-safe values and decode them back into typed nested structures.
 - **DateTime Extensions**: Adds additional functionality to the `DateTime` class, making it easier to format dates and calculate differences.
 - **String Extensions**: Enhances the `String` class by adding new methods for common transformations and checks.
 - **JWT Utilities**: Provides getters to parse a JWT token from a `String`, then get common properties from it.
@@ -82,6 +83,37 @@ Here are some examples of how to use the utilities and extensions provided by th
 
       const MyFreezedClass._();
     }
+    ```
+
+### Recursive JSON Value Utilities
+
+  Use these extension methods to recursively normalize nested data before
+  serializing it to JSON.
+
+    ```dart
+    final payload = {
+      "metadata": {
+        "tags": ["arcane", "framework"],
+      },
+      123: DateTime.utc(2026, 1, 1),
+    };
+
+    final jsonSafe = payload.toJsonValue();
+    // {
+    //   "metadata": {"tags": ["arcane", "framework"]},
+    //   "123": "2026-01-01 00:00:00.000Z"
+    // }
+
+    final decoded = jsonSafe.fromJsonValue();
+
+    // Extension methods:
+    final mapJson = payload.toJsonMap();
+    final mapAgain = mapJson.fromJsonMap();
+
+    final nestedList = <Object?>[
+      <Object?>[1, 2, <Object?, Object?>{"deep": true}],
+    ];
+    final nestedListJson = nestedList.toJsonList();
     ```
 
 ### DateTime Extensions

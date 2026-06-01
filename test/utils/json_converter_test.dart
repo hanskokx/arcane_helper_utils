@@ -48,4 +48,55 @@ void main() {
       expect(converter.toJson(null), null);
     });
   });
+
+  group("Json value extensions", () {
+    test("toJsonValue recursively encodes nested maps and lists", () {
+      final input = <Object?, Object?>{
+        "user": <Object?, Object?>{
+          "name": "Hans",
+          "stats": <Object?>[1, 2, true],
+        },
+        42: <Object?>[
+          <Object?, Object?>{"nested": "value"},
+        ],
+      };
+
+      final result = input.toJsonValue() as Map<String, Object?>;
+
+      expect(result["42"], isA<List<Object?>>());
+      expect(result["user"], isA<Map<String, Object?>>());
+      final user = result["user"]! as Map<String, Object?>;
+      expect(user["name"], "Hans");
+      expect(user["stats"], <Object?>[1, 2, true]);
+    });
+
+    test("toJsonValue stringifies unsupported leaves", () {
+      final now = DateTime.utc(2026, 1, 1);
+
+      expect(now.toJsonValue(), now.toString());
+    });
+
+    test("fromJsonValue recursively decodes nested maps and lists", () {
+      final input = <String, Object?>{
+        "metadata": <String, Object?>{
+          "list": <Object?>[
+            <String, Object?>{"ok": true},
+            7,
+          ],
+        },
+      };
+
+      final result = input.fromJsonValue() as Map<String, Object?>;
+      final metadata = result["metadata"]! as Map<String, Object?>;
+      final list = metadata["list"]! as List<Object?>;
+
+      expect((list.first as Map<String, Object?>)["ok"], isTrue);
+      expect(list[1], 7);
+    });
+
+    test("fromJsonMap returns null when value is not a map", () {
+      expect(("not a map" as Object?).fromJsonMap(), isNull);
+      expect((null as Object?).fromJsonMap(), isNull);
+    });
+  });
 }

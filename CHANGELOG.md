@@ -1,3 +1,10 @@
+## 1.4.8
+
+- Added extension methods for recursive JSON-safe serialization and deserialization of nested maps/lists:
+  - `toJsonValue()` / `fromJsonValue()`
+  - `toJsonMap()` / `fromJsonMap()`
+  - `toJsonList()` / `fromJsonList()`
+
 ## 1.4.7
 
 - Added the `isExpired` and `expiresSoon` getters to JWT tokens.

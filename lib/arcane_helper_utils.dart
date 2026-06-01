@@ -3,6 +3,7 @@ library arcane_helper_utils;
 export "package:arcane_helper_utils/src/classes/fixed_size_list.dart";
 export "package:arcane_helper_utils/src/extensions/date_time.dart";
 export "package:arcane_helper_utils/src/extensions/dynamic.dart";
+export "package:arcane_helper_utils/src/extensions/json_value.dart";
 export "package:arcane_helper_utils/src/extensions/jwt.dart";
 export "package:arcane_helper_utils/src/extensions/list.dart";
 export "package:arcane_helper_utils/src/extensions/string.dart";
